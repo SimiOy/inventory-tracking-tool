@@ -14,7 +14,7 @@
 	<name>inventoryTrackingTool</name>
 	<description>inventory tracking system Spring Boot and React</description>
 	<properties>
-		<java.version>16</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
