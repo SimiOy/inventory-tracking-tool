@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/inventory_tracking_frontend/node_modules/
