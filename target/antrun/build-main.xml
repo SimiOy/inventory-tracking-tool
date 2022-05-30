@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <copy todir="C:\Shopify challenge\inventoryTrackingTool\target/classes/public">
+      <fileset dir="C:\Shopify challenge\inventoryTrackingTool/inventory_tracking_frontend/build" />
+    </copy>
+  </target>
+</project>

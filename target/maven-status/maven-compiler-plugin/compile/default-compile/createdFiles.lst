@@ -1,0 +1,11 @@
+com\simionescuandrei\inventoryTrackingTool\repository\WarehouseRepo.class
+com\simionescuandrei\inventoryTrackingTool\service\WarehouseServiceImpl.class
+com\simionescuandrei\inventoryTrackingTool\service\WarehouseService.class
+com\simionescuandrei\inventoryTrackingTool\model\Item.class
+com\simionescuandrei\inventoryTrackingTool\service\ItemService.class
+com\simionescuandrei\inventoryTrackingTool\controller\ItemController.class
+com\simionescuandrei\inventoryTrackingTool\model\Warehouse.class
+com\simionescuandrei\inventoryTrackingTool\service\ItemServiceImpl.class
+com\simionescuandrei\inventoryTrackingTool\repository\ItemRepo.class
+com\simionescuandrei\inventoryTrackingTool\controller\WarehouseController.class
+com\simionescuandrei\inventoryTrackingTool\InventoryTrackingToolApplication.class
