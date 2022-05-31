@@ -108,9 +108,13 @@ public class Item {
     this.name = item.getName();
     this.price = item.getPrice();
     this.description = item.getDescription();
-    int previousStock = this.stock;
+    int previousStock = this.stock == null ? 0 : this.stock;
     this.stock = item.getStock();
-    this.availableStock += (this.stock - previousStock);
+    if (this.availableStock == null) {
+      this.availableStock = this.stock - previousStock;
+    } else {
+      this.availableStock += (this.stock - previousStock);
+    }
     return true;
   }
 

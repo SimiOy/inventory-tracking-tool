@@ -6,6 +6,7 @@ import com.simionescuandrei.inventoryTrackingTool.repository.ItemRepo;
 import com.simionescuandrei.inventoryTrackingTool.repository.WarehouseRepo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class WarehouseServiceImpl implements WarehouseService {
 
-  @Autowired
-  private WarehouseRepo warehouseRepo;
+  @Autowired private WarehouseRepo warehouseRepo;
   @Autowired private ItemRepo itemRepo;
 
   /**
@@ -36,6 +36,17 @@ public class WarehouseServiceImpl implements WarehouseService {
    */
   @Override
   public List<Warehouse> getAllWarehouses() {
+    for (Warehouse wh : warehouseRepo.findAll()) {
+      Map<Long, Integer> items = wh.getItems();
+      for (Long id : items.keySet()) {
+        if (itemRepo.findById(id).isEmpty()) {
+          // the item got deleted
+          items.remove(id);
+        }
+      }
+      wh.setItems(items);
+      warehouseRepo.save(wh);
+    }
     return warehouseRepo.findAll();
   }
 

@@ -60,10 +60,17 @@ public class ItemController {
   public ResponseEntity<Item> update(@RequestBody Item item, @PathVariable Long id) {
     try {
       Item curItem = itemService.getItem(id);
-      item.setAvailableStock(curItem.getAvailableStock() + (item.getStock() - curItem.getStock()));
-      curItem.updateItem(item);
-      itemService.saveItem(item);
-      return new ResponseEntity<>(HttpStatus.OK);
+      item.setAvailableStock(
+          (curItem.getAvailableStock() == null ? 0 : curItem.getAvailableStock())
+              + ((item.getStock() == null ? 0 : item.getStock())
+                  - (curItem.getStock() == null ? 0 : curItem.getStock())));
+      boolean updateSuccessful = curItem.updateItem(item);
+      if (updateSuccessful) {
+        itemService.saveItem(item);
+        return new ResponseEntity<>(HttpStatus.OK);
+      } else {
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      }
     } catch (NoSuchElementException e) {
       return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
     }

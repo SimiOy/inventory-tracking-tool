@@ -91,6 +91,7 @@ const removeItem = index => {
     }).then(() => {
         console.log("Item deleted")
         updateItems();
+        updateWarehouses()
     })
 }
 
@@ -319,7 +320,7 @@ const handleChangeTo = (event: React.ChangeEvent<HTMLInputElement>) => {
                 label="Select"
                 value={warehouseIdTo}
                 onChange={handleChangeTo}
-                helperText="Warehouse (origin)"
+                helperText="Warehouse (destination)"
                 >
                 {warehouses.map((option) => (
                     <MenuItem key={option.id} value={option.id}>
@@ -333,7 +334,7 @@ const handleChangeTo = (event: React.ChangeEvent<HTMLInputElement>) => {
                 label="Select"
                 value={warehouseIdFrom}
                 onChange={handleChangeFrom}
-                helperText="Warehouse (destination)"
+                helperText="Warehouse (origin)"
                 >
                 {warehouses.map((option) => (
                     <MenuItem key={option.id} value={option.id}>
